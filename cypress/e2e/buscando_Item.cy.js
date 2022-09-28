@@ -6,13 +6,6 @@ describe('Buscando produto pela barra', () => {
         cy.visit('/')
         cy.get('#nav-link-accountList').click()
         cy.preenchendoConta()
-
-        /*         cy.get('#ap_email', {timeout:4500})
-            .type('gh.company04@gmail.com')
-            .should('exist', true)
-        cy.get('#continue').click()
-        cy.get('#ap_password').type('mamageral10')
-        cy.get('#signInSubmit').click() */
     });
     
     

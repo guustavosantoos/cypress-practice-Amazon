@@ -1,8 +1,8 @@
 Cypress.Commands.add('preenchendoConta', conta => {
     
     cy.get('#ap_email', {timeout:4500})
-        .type('gh.company04@gmail.com')
+        .type('gustavo.braulioteste@gmail.com')
     cy.get('#continue').click()
-    cy.get('#ap_password').type('mamageral10')
+    cy.get('#ap_password').type('@Teste123')
     cy.get('#signInSubmit').click()
 })
