@@ -1,0 +1,80 @@
+* É MELHOR USAR O {TIMEOUT} DO QUE O 'CY.WAIT()' 
+
+1. {TIMEOUT: 'x'} = PODE TER 50 SEGUNDOS PARA ESPERAR PORÉM QUANDO SER EXIBIDO TAL ITEM ELE SEGUE O FLUXO NORMALMENTE.
+EX: 
+    cy.get('#buttonDelay').click()
+        cy.get('#novoCampo', {timeout: 4500}).should('exist') */
+
+
+2. CY.WAIT() = ELE VAI ESPERAR EXATAMENTE OS X SEGUNDOS PARA SEGUIR O FLUXO DO TESTE.
+EX: 
+    cy.get('#buttonListDOM').click()
+        cy.wait(5000)
+
+
+3. HAVE.LENGHT = ESPERO QUE TENHA O TAMANHO 
+EX: 
+    .should('have.lenght', 2) // VERIFICA QUE TENHA O TAMANHO DE 2 // 
+
+
+Da pra localizar o ID no SELECT pela '#'.
+EX: 
+    #listColor ou [id='listColor']
+
+
+Site para CSS selectors: 'https://www.w3schools.com/cssref/css_selectors.asp'
+
+
+[onclick="alert('Francisco')"] - Sem o '*'.
+[onclick*='Francisco'] - '*' Localizar certinho o valor que está dentro, que nesse caso seria "FRANCISCO"
+
+
+* SE EU QUERO MEIO QUE CRIAR FUNÇÃO / VARIAVEL PARA LIMPAR O CÓDIGO, POSSO POR DENTRO DA PASTA /SUPPORT E DEPOIS IMPORTA E EXPORTAR.
+DENTRO DA PASTA /SUPPORT (export default locators;)
+DENTRO DA PASTA DO PROJETO E DO TESTE (import loc from '../..support/locators')
+  
+
+
+
+
+
+
+  =====================================================================================================================================================================================================================
+
+___________________________________________________
+  //        //      API REST        //        //       
+___________________________________________________
+
+  GET = SERVE PARA BUSCAR, PEDIR ALGUM RECURSO.
+
+  POST = ENVIA REQUISIÇÃO 
+  EXEMPLO: ENVIA INFORMAÇÕES NECESSÁRIAS PARA REALIZAR UMA CONTA.
+  BODY 
+  {
+      cpf:
+      senha:
+  }
+
+  PUT = ALTERAR UM DETERMINADO RECURSO, TAMBÉM USA O 'BODY'
+  BODY {}
+
+  DELETE = REMOVER UM RECURSO, REMOVER  CONTA DE NÚMERO 1, POR EXEMPLO.
+
+*POSSO MANDAR DADO ALEM DA URL, ATRAVÉS DO 'HEADER' , TOKEN DE UMA REQUISIÇÃO.
+ATRAVEŚ DO RECURSO QUE ESTÁ DENTRO DA URL, 
+
+PROTOCOLO       DOMINIO / BASE URL            RECURSO     ID
+   _______       __________________________   _________   ____
+   |     |       |                         |  |        |  |   |
+    https |  :// | barrigarest.wcaquino.me |/ | contas |/ | i |
+
+PARA REALIZAR REQUISIÇÃO ATRAVÉS DO CYPRESS.
+cy.request({
+    method: "POST",
+    url:    "https://barrigarest.wcaquino.me/signin",
+    body {
+        email: "a@a",
+        redirecionar: false,
+        senha: "a",
+    }.then(res => console.log(res))
+})
