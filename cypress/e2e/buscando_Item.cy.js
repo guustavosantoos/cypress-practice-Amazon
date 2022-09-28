@@ -1,6 +1,6 @@
 import '../support/commandsConta'
-import locators from '../support/locators'
-
+import loc from '../support/locators'
+ 
 describe('Buscando produto pela barra', () => {
     before(() => {
         cy.visit('/')
@@ -18,8 +18,8 @@ describe('Buscando produto pela barra', () => {
     
     
     it('Comprando alexa pela barra de pesquisa', () => {
-        cy.get('#twotabsearchtextbox').type('Alexa')
-        cy.get('#nav-search-submit-button').click()
+        cy.get(locators.ACOES.BarraDePesquisa).type('Alexa')
+        cy.get(locators.ACOES.btn_Pesquisa).click()
         cy.get('span div h1 > div>div>div>div:nth-child(1)').should('contain', 'Alexa')
         
         // clicando na alexa
@@ -45,21 +45,21 @@ describe('Buscando produto pela barra', () => {
 
     it.only('Comprando um kindle através da barra de pesquisa', () => {
         // Pesquisando o Kindle
-        cy.get('#twotabsearchtextbox').type('Kindle')
-        cy.get('#nav-search-submit-button').click()
+        cy.get(loc.ACOES.BarraDePesquisa).type('Kindle')
+        cy.get(loc.ACOES.btn_Pesquisa).click()
+
         
         // Selecionando o produto 
-        cy.get(`[data-asin="B07FQK1TS9"] > .sg-col-inner > .s-widget-container > .s-card-container > .a-spacing-base > .a-spacing-small > .s-title-instructions-style > .a-size-mini > .a-link-normal > .a-size-base`).click()
-        cy.get('#productTitle').should('have.text', `        Kindle 10a. geração com bateria de longa duração - Cor Preta       `)
-        cy.get('#buy-now-button[name="submit.buy-now"]').click()
+        cy.get(loc.ACOES.selecionandoProduto).click()
+        cy.get(loc.ACOES.verificandoProduto).should('have.text', `        Kindle 10a. geração com bateria de longa duração - Cor Preta       `)
+        cy.get(loc.ACOES.btn_Compra).click()
 
         // Tela de Finalização de compra
-        cy.get('div > h1').should('contain', `Finalizar a compra`)
-        cy.xpath('/html/body/div[5]/div[2]/div/div/div[1]/div[1]/div/div[4]/div/div[3]/div/div[2]/div/div/div[2]/div/form/div/div[1]/div/div[2]/div[2]/div/div/div/div/div[1]/span/div/label/input')
-            .check()
-        cy.get('.a-box-inner > .a-button > .a-button-inner > .a-button-input').click()
+        cy.get(loc.ACOES.verificarFinalizarCompra).should('contain', `Finalizar a compra`)
+        cy.xpath(loc.ACOES.selecionarPix).check()
+        cy.get(loc.ACOES.btn_FinalizarCompra).click()
             cy.wait(3500)
-        cy.get('.place-order-btn > .continue-buttons > .continue-button > .a-button-inner > .a-button-input').click()
-        cy.get('.a-alert-heading', {timeout:3000}).should('contain', 'Seu pedido foi reservado.')
+        cy.get(loc.ACOES.btn_finalizarCompra2).click()
+        cy.get(loc.ACOES.VerificarPedidoReservado , {setTimeout:5000}).should('contain', 'Seu pedido foi reservado.')
     })
 });
