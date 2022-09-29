@@ -14,8 +14,18 @@ const loc = {
         verificarFinalizarCompra: 'div > h1',
         selecionarPix: '/html/body/div[5]/div[2]/div/div/div[1]/div[1]/div/div[4]/div/div[3]/div/div[2]/div/div/div[2]/div/form/div/div[1]/div/div[2]/div[2]/div/div/div/div/div[1]/span/div/label/input',
         VerificarPedidoReservado: '.a-alert-heading',
+    },
 
+    LOGIN: {
+        btn_login:                    '#nav-link-accountList',
+        btn_continuarLogin:           '#continue',
+        btn_finalizarLogin:           '#signInSubmit',
+        campoEMAIL:                   '#ap_email',
+        campoSENHA:                   '#ap_password',
+        verificarMensagemERRO:        'div h4',
+        verificarMensagemERRO_SENHA: 'div  ul li > span'
 
+        
     }
 
 
