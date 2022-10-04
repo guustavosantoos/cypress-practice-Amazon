@@ -1,3 +1,5 @@
+import loc from "../support/locators"
+
 Cypress.Commands.add('preenchendoConta', conta => {
     
     cy.get('#ap_email', {timeout:4500})
@@ -5,6 +7,17 @@ Cypress.Commands.add('preenchendoConta', conta => {
     cy.get('#continue').click()
     cy.get('#ap_password').type('@Teste123')
     cy.get('#signInSubmit').click()
+})
+
+
+Cypress.Commands.add('logando_conta', logando => {
+    cy.get(loc.LOGIN.btn_login).click()
+    cy.get(loc.LOGIN.campoEMAIL, {timeout:4500})
+        .should('exist', true)
+        .type('gustavo.braulioteste@gmail.com')
+    cy.get(loc.LOGIN.btn_continuarLogin).click()
+    cy.get(loc.LOGIN.campoSENHA).type('@Teste123')
+    cy.get(loc.LOGIN.btn_finalizarLogin).click()
 })
 
 
