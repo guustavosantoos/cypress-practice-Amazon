@@ -69,10 +69,6 @@ describe('Endereço ', () => {
         cy.get('.a-popover-inner > .a-section > :nth-child(4) > .a-span-last > .a-row').should('exist');
         cy.get('.a-spacing-none > .a-button').click()
             .click()
-            
-        /* cy.get(loc.ENDERECOS.verificar_Exclusao).should('exist', true) */
- 
-
     })
 
 
